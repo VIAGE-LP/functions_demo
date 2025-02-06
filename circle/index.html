@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>circle_box</title>
+</head>
+
+<body>
+  <style>
+    .circle_box {
+      height: 100vh;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translate(-40%, -30vh);
+    }
+
+    .circle_box .circle {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 2;
+    }
+
+    .circle_box img {
+      width: auto;
+      height: 130vh;
+      vertical-align: middle;
+    }
+
+    .circle_box .circle.a {
+      animation: rotation 90s infinite;
+      animation-delay: 2s;
+      animation-direction: reverse;
+    }
+
+    .circle_box .circle.b {
+      animation: rotation 24s infinite;
+    }
+
+    .circle_box .circle.c {
+      animation: rotation 36s infinite;
+      animation-direction: reverse;
+    }
+
+    @keyframes rotation {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media screen and (orientation: portrait) and (max-width: 1366px) {
+      .circle_box {
+        top: 50%;
+        transform: translate(-60%, -50%);
+        height: auto;
+      }
+
+      .circle_box img {
+        height: 80vh;
+      }
+    }
+
+    @media screen and (orientation: landscape) and (max-width: 1368px) {
+      .circle_box {
+        transform: translate(-50%, -10vh);
+      }
+
+      .circle_box img {
+        height: 110vh;
+      }
+    }
+
+    @media screen and (orientation: landscape) and (max-width: 767px) {
+      .circle_box {
+        transform: translate(-16%, 25%);
+      }
+
+      .circle_box img {
+        width: 60vw;
+        height: auto;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .circle_box {
+        transform: translate(-65%, -50%);
+      }
+
+      .circle_box img {
+        height: 65vh;
+      }
+    }
+  </style>
+  <div class="circle_box">
+    <img src="img/banner_circle_bg.png" alt="">
+    <div class="circle a">
+      <img src="img/banner_circle_a.png" alt="">
+    </div>
+    <div class="circle b">
+      <img src="img/banner_circle_b.png" alt="">
+    </div>
+    <div class="circle c">
+      <img src="img/banner_circle_c.png" alt="">
+    </div>
+  </div>
+</body>
+
+</html>
