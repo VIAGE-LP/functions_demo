@@ -178,7 +178,7 @@
 
     <script>
         const probability = [13.50, 25.24, 61.26] //獎項機率，假設A獎13.50%、 B獎25.24%、C獎61.26%，設定機率時要注意，可以設到小數點或是增加獎項欄位都沒關係，但所有數字加總要是100％
-        const num = Math.random() * 99;  // 0~99 共100個數字，取一個 0~99之間的亂數。
+        const num = Math.random() * 100;  // 亂數機率總和為 100%，取一個 0 到 99.9 的浮點數。
         let first_click = true;
 
         //click 拉霸手把 
@@ -187,24 +187,24 @@
             const startButton = document.getElementById('startButton');
             startButton.classList.add('startButtonAnimation');
 
-            // A獎13.50% 亂數num落在 0 ~ 12.5 之間 (這裡13.5要減1，因為是從0開始取亂數)
-            if ((0 <= num) && (num <= probability[0] - 1)) {
+            // A獎13.50% 
+            if (num >= 0 && num < probability[0]) {
                 //第一次click拉霸手把，呼叫拉霸轉動函式，順便帶入A獎要呈現的圖片src連結
                 if (first_click) {
                     slot_animation("https://viage-lp.github.io/functions_demo/slot/img/slotMachine/SLOTBG-7-02.svg");
                 }
                 copyCode("fkookko", 300);
 
-                // B獎25.24% 亂數num落在 12.5 ~ 37.74 之間
-            } else if ((probability[0] - 1 < num) && (num <= (probability[0] - 1 + probability[1]))) {
+            // B獎25.24%
+            } else if (num >= probability[0] && num < (probability[0] + probability[1])) {
                 //第一次第一次click拉霸手把，呼叫拉霸轉動函式，順便帶入B獎要呈現的圖片src連結
                 if (first_click) {
                     slot_animation("https://viage-lp.github.io/functions_demo/slot/img/slotMachine/SLOTBG-7-03.svg");
                 }
                 copyCode("fkookko_200", 200);
 
-                // C獎61.26% 亂數num落在 37.74 ~ 99 之間
-            } else if (((probability[0] - 1 + probability[1]) < num) && (num <= 99)) {
+            // C獎61.26%
+            } else {
                 //第一次第一次click拉霸手把，呼叫拉霸轉動函式，順便帶入C獎要呈現的圖片src連結
                 if (first_click) {
                     slot_animation("https://viage-lp.github.io/functions_demo/slot/img/slotMachine/SLOTBG-7-04.svg");
